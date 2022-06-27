@@ -1,2 +1,9 @@
 # LaravelDavlatBlog
-Blog base on Laravel
+Blog based on the Laravel
+
+#Stack:
+    - Laravel
+    - Blade
+    - Mysql
+    - Docker
+    - Nginx
