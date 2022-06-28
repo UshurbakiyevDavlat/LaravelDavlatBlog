@@ -34,9 +34,10 @@ services:
       - "8101:3306"
     container_name: db_docker_laraBlog
 
-  npm: # docker-compose run --rm npm run dev
+  npm: # docker-compose run --rm : npm run dev, before that check if you installed npm with npm install,
+       #  and your package-lock.json has actual dependencies.
     image: node:14
-    working_dir: /var/www/home/adduser/Projects/LaravelDavlatBlog
+    working_dir: /var/www/home/davlatuser/LaravelDavlatBlog # make sure your path is right, in ubuntu you can type pwd for this.
     entrypoint: [ "npm" ]
     volumes:
       - "./:/var/www/home/davlatuser/LaravelDavlatBlog"
