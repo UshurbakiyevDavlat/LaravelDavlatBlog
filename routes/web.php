@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Main\IndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::group(['namespace' => 'Main'], static function () {
+    Route::get('/index', [IndexController::class, '__invoke'])->name('main.index');
 });
 
 Auth::routes();
