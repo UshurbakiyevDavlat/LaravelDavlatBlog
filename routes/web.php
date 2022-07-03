@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\Admin\Main\IndexController as AdminIndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', static function () {
     return view('welcome');
 });
 
 Route::group(['namespace' => 'Main'], static function () {
     Route::get('/index', [IndexController::class, '__invoke'])->name('main.index');
+});
+
+Route::group(['namespace' => 'Admin','prefix' => 'admin'], static function () {
+    Route::group(['namespace'=>'Main'],static function () {
+        Route::get('/index',[AdminIndexController::class, '__invoke'])->name('admin.main.index');
+    });
 });
 
 Auth::routes();
