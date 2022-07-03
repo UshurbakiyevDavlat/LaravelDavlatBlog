@@ -8,10 +8,10 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class IndexController extends Controller
+class CreateController extends Controller
 {
     public function __invoke(): Factory|View|Application
     {
-        return view('admin.category.index');
+        return view('admin.category.create');
     }
 }

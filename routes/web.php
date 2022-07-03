@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Category\CreateController;
 use App\Http\Controllers\Admin\Category\IndexController as CategoryIndexController;
 use App\Http\Controllers\Main\IndexController;
 use App\Http\Controllers\Admin\Main\IndexController as AdminIndexController;
@@ -28,8 +29,9 @@ Route::group(['namespace' => 'Admin','prefix' => 'admin'], static function () {
     Route::group(['namespace'=>'Main'],static function () {
         Route::get('/index',[AdminIndexController::class, '__invoke'])->name('admin.main.index');
     });
-    Route::group(['namespace' => 'Category','prefix' => 'category'], static function () {
+    Route::group(['namespace' => 'Category','prefix' => 'categories'], static function () {
         Route::get('/index',[CategoryIndexController::class,'__invoke'])->name('admin.category.index');
+        Route::get('/create',[CreateController::class,'__invoke'])->name('admin.category.create');
     });
 });
 
