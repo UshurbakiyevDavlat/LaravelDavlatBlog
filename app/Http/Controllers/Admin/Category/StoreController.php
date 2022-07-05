@@ -13,6 +13,6 @@ class StoreController extends Controller
     {
         $data = $request->validated();
         Category::create($data); // we do not need Service class here yet, until mode complicated logic
-        return redirect()->back();
+        return redirect()->route('admin.category.index');
     }
 }

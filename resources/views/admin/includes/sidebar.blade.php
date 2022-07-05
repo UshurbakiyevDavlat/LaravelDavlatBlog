@@ -18,15 +18,7 @@
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                                 Categories
-                                <span class="badge badge-info right">0</span>
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{route('admin.category.create')}}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Create categories
+                                <span class="badge badge-info right">{{count(\App\Models\Category::all())}}</span>
                             </p>
                         </a>
                     </li>

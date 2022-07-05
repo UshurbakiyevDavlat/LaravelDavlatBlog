@@ -24,7 +24,45 @@
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
-                    <div class="col-12">...</div>
+                    <div class="col-12">
+                        <a href="{{route('admin.category.create')}}">
+                            <button class="btn btn-primary">
+                                Add new category
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="row pt-4">
+                    <div class="col-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">List of categories</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body table-responsive p-0">
+                                <table class="table table-hover text-nowrap">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                        <th>Created at</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($categories as $category)
+                                    <tr>
+                                        <td>{{$category->id}}</td>
+                                        <td>{{$category->title}}</td>
+                                        <td>{{$category->created_at}}</td>
+                                    </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
                 </div>
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
