@@ -28,7 +28,16 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Category information</h3>
+                                <span class="ml-2"><a href="{{route('admin.category.edit',$category->id)}}"><i class="fa fa-pen"></i></a></span>
+                                <form action="{{route('admin.category.delete',$category->id)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="bg-transparent border-0">
+                                        <i class="fa fa-trash text-danger" role="button"></i>
+                                    </button>
+                                </form>
                             </div>
+
                             <!-- /.card-header -->
                             <div class="card-body table-responsive p-0">
                                 <table class="table table-hover text-nowrap">

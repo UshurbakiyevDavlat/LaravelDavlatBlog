@@ -45,7 +45,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Title</th>
-                                        <th colspan="2" class="text-center">Actions</th>
+                                        <th colspan="3" class="text-center">Actions</th>
                                         <th>Created at</th>
                                     </tr>
                                     </thead>
@@ -54,8 +54,17 @@
                                     <tr>
                                         <td>{{$category->id}}</td>
                                         <td>{{$category->title}}</td>
-                                        <td><a href="{{route('admin.category.show',$category->id)}}"><i class="fa fa-eye"></i></a></td>
-                                        <td><a href="{{route('admin.category.edit',$category->id)}}"><i class="fa fa-pen"></i></a></td>
+                                        <td class="text-center"><a href="{{route('admin.category.show',$category->id)}}"><i class="fa fa-eye"></i></a></td>
+                                        <td class="text-center"><a href="{{route('admin.category.edit',$category->id)}}"><i class="fa fa-pen"></i></a></td>
+                                        <td class="text-center">
+                                            <form action="{{route('admin.category.delete',$category->id)}}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="bg-transparent border-0">
+                                                    <i class="fa fa-trash text-danger" role="button"></i>
+                                                </button>
+                                            </form>
+                                        </td>
                                         <td>{{$category->created_at}}</td>
                                     </tr>
                                     @endforeach

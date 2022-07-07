@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\Category\CreateController;
+use App\Http\Controllers\Admin\Category\DeleteController;
 use App\Http\Controllers\Admin\Category\EditController;
 use App\Http\Controllers\Admin\Category\IndexController as CategoryIndexController;
 use App\Http\Controllers\Admin\Category\ShowController;
@@ -40,6 +41,7 @@ Route::group(['namespace' => 'Admin','prefix' => 'admin'], static function () {
         Route::get('/edit/{category}',[EditController::class,'__invoke'])->name('admin.category.edit');
         Route::patch('/update/{category}',[UpdateController::class,'__invoke'])->name('admin.category.update');
         Route::get('/{category}',[ShowController::class,'__invoke'])->name('admin.category.show');
+        Route::delete('/{category}',[DeleteController::class,'__invoke'])->name('admin.category.delete');
     });
 });
 
