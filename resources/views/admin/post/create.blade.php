@@ -25,16 +25,25 @@
                 <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-12">
-                        <form method="post" action="{{route('admin.post.store')}}" class="w-25">
+                        <form method="post" action="{{route('admin.post.store')}}">
                             @csrf
                             <div class="form-group">
                                 <label for="title">
-                                    <input type="text" class="form-control" name="title" placeholder="Enter title of post">
+                                    <input type="text" class="form-control" name="title" value="{{old('title')}}"
+                                           placeholder="Enter title of post">
                                 </label>
+                                @error('title')
+                                <p class="text-danger">{{$message}}</p>
+                                @enderror
                             </div>
-                            @error('title')
-                            <p class="text-danger">{{$message}}</p>
-                            @enderror
+                            <div class="form-group">
+                                <label for="summernote">
+                                    <textarea id="summernote" name="content">{{old('content')}}</textarea>
+                                </label>
+                                @error('content')
+                                <p class="text-danger">{{$message}}</p>
+                                @enderror
+                            </div>
                             <input type="submit" class="btn btn-success" value="Save post">
                         </form>
                     </div>
