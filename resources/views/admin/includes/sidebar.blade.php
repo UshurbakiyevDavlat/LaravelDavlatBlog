@@ -13,6 +13,17 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-header">Services</li>
+
+                    <li class="nav-item">
+                        <a href="{{route('admin.post.index')}}" class="nav-link">
+                            <i class="nav-icon fa fa-sticky-note"></i>
+                            <p>
+                                Posts
+                                <span class="badge badge-info right">{{count(\App\Models\Post::all())}}</span>
+                            </p>
+                        </a>
+                    </li>
+
                     <li class="nav-item">
                         <a href="{{route('admin.category.index')}}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
