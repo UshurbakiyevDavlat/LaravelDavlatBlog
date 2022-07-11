@@ -98,15 +98,15 @@
 
                             <div class="form-group">
                                 <label>Tags</label>
-                                <select class="select2" multiple="multiple" data-placeholder="Select tags" style="width: 100%;">
-                                    <option>Alabama</option>
-                                    <option>Alaska</option>
-                                    <option>California</option>
-                                    <option>Delaware</option>
-                                    <option>Tennessee</option>
-                                    <option>Texas</option>
-                                    <option>Washington</option>
+                                <select class="select2" name="tagIds[]" multiple="multiple" data-placeholder="Select tags" style="width: 100%;">
+                                    @foreach($tags as $tag)
+                                    <option
+                                        {{is_array(old('tagIds')) && in_array($tag->id, old('tagIds')) ? ' selected' : ''}} value="{{$tag->id}}">{{$tag->title}}</option>
+                                    @endforeach
                                 </select>
+                                @error('tagIds')
+                                <p class="text-danger">{{$message}}</p>
+                                @enderror
                             </div>
                             <input type="submit" class="btn btn-success" value="Save post">
                         </form>
