@@ -46,10 +46,11 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="exampleInputFile">Preview image</label>
+                                <label for="preview_image">Preview image</label>
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="previewImage" name="preview_image">
+                                        <input type="file" class="custom-file-input" id="previewImage"
+                                               name="preview_image">
                                         <label class="custom-file-label" for="previewImage">Choose file</label>
                                     </div>
                                     <div class="input-group-append">
@@ -73,6 +74,24 @@
                                     </div>
                                 </div>
                                 @error('main_image')
+                                <p class="text-danger">{{$message}}</p>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category_id" class="w-25">
+                                    Select category
+                                    <select class="form-control" name="category_id">
+                                        @foreach($categories as $category)
+                                            <option
+                                                value="{{$category->id}}
+                                                    "{{$category->id == old('category_id') ? ' selected' : ''}}>
+                                                {{$category->title}}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </label>
+                                @error('category_id')
                                 <p class="text-danger">{{$message}}</p>
                                 @enderror
                             </div>
