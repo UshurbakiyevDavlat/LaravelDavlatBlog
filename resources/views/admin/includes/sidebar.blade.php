@@ -15,6 +15,16 @@
                     <li class="nav-header">Services</li>
 
                     <li class="nav-item">
+                        <a href="{{route('admin.user.index')}}" class="nav-link">
+                            <i class="nav-icon fa fa-user"></i>
+                            <p>
+                                Users
+                                <span class="badge badge-info right">{{count(\App\Models\User::all())}}</span>
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
                         <a href="{{route('admin.post.index')}}" class="nav-link">
                             <i class="nav-icon fa fa-sticky-note"></i>
                             <p>
