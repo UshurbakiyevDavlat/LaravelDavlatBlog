@@ -25,7 +25,9 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:4',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email,'. $this->user_id,
+            'role' => 'required|integer',
+            'user_id' => 'required|integer|exists:users,id',
             'password' => 'required|string|min:8',
         ];
     }

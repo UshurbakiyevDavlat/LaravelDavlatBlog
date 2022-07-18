@@ -46,6 +46,10 @@
                             </div>
 
                             <div class="form-group">
+                                <input type="hidden" name="user_id" value="{{$user->id}}">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="password">
                                     <input type="password" value="{{$user->password}}" class="form-control" name="password" placeholder="Enter password of user">
                                 </label>
@@ -53,6 +57,20 @@
                                 <p class="text-danger">{{$message}}</p>
                                 @enderror
                             </div>
+
+                            <div class="form-group">
+                                <label>Roles</label>
+                                <select class="select2" name="role"  data-placeholder="Select role" style="width: 100%;">
+                                    @foreach($roles as $id => $role)
+                                        <option
+                                            {{$id === $user->role ? ' selected' : ''}} value="{{$id}}">{{$role}}</option>
+                                    @endforeach
+                                </select>
+                                @error('role')
+                                <p class="text-danger">{{$message}}</p>
+                                @enderror
+                            </div>
+
                             <input type="submit" class="btn btn-success" value="Save user">
                         </form>
                     </div>
