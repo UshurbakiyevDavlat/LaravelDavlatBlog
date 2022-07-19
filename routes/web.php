@@ -51,7 +51,7 @@ Route::group(['namespace' => 'Main'], static function () {
     Route::get('/index', [IndexController::class, '__invoke'])->name('main.index');
 });
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], static function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth','admin']], static function () {
     Route::group(['namespace' => 'Main'], static function () {
         Route::get('/index', [AdminIndexController::class, '__invoke'])->name('admin.main.index');
     });

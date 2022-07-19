@@ -30,34 +30,38 @@
     </div>
 
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light justify-content-between">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
         </ul>
+        <form method="post" action="{{route('logout')}}">
+            @csrf
+            <input type="submit" value="Exit" class="btn btn-outline-primary">
+        </form>
     </nav>
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-   @include('admin.includes.sidebar')
+@include('admin.includes.sidebar')
 
-    <!-- /.content -->
-   @yield('content')
+<!-- /.content -->
+@yield('content')
 
-    <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <strong>DavlatBlog 2022</strong>
-    </footer>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<footer class="main-footer">
+    <strong>DavlatBlog 2022</strong>
+</footer>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
 <!-- jQuery -->
 <script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -116,7 +120,7 @@
 </script>
 </body>
 <style>
-    .custom-file-input:lang(en)~.custom-file-label::after{
+    .custom-file-input:lang(en) ~ .custom-file-label::after {
         content: "....";
     }
 </style>
