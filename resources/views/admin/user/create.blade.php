@@ -44,14 +44,6 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group">
-                                <label for="password">
-                                    <input type="password" class="form-control" name="password" placeholder="Enter password of user">
-                                </label>
-                                @error('password')
-                                <p class="text-danger">{{$message}}</p>
-                                @enderror
-                            </div>
 
                             <div class="form-group">
                                 <label>Roles</label>
