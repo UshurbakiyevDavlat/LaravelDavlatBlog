@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\SendVerifyEmailWithQueueNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -11,7 +12,10 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
+    use HasApiTokens;
+    use HasFactory;
+    use Notifiable;
+    use SoftDeletes;
 
     public const ROLE_ADMIN = 0;
     public const ROLE_READER = 1;
@@ -54,4 +58,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new SendVerifyEmailWithQueueNotification());
+    }
 }
