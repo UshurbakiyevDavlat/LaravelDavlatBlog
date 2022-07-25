@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\User\ShowController as UserShowController;
 use App\Http\Controllers\Admin\User\StoreController as UserStoreController;
 use App\Http\Controllers\Admin\User\UpdateController as UserUpdateController;
 use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\Personal\Main\IndexController as PersonalIndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +50,18 @@ Route::get('/', static function () {
 
 Route::group(['namespace' => 'Main'], static function () {
     Route::get('/index', [IndexController::class, '__invoke'])->name('main.index');
+});
+
+Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' => ['auth','verified']], static function () {
+    Route::group(['namespace' => 'Main'], static function () {
+        Route::get('/', [PersonalIndexController::class, '__invoke'])->name('personal.main.index');
+    });
+    Route::group(['namespace' => 'Liked', 'prefix' => 'liked'], static function () {
+        Route::get('/', [\App\Http\Controllers\Personal\Liked\IndexController::class, '__invoke'])->name('personal.liked.index');
+    });
+    Route::group(['namespace' => 'Comment', 'prefix' => 'comment'], static function () {
+        Route::get('/', [\App\Http\Controllers\Personal\Comment\IndexController::class, '__invoke'])->name('personal.comment.index');
+    });
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth','admin','verified']], static function () {
