@@ -2,16 +2,19 @@
 
 namespace App\Models;
 
+use App\Models\Personal\Comment;
 use App\Models\Personal\PostUserLike;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
     protected $guarded = false;
 
     public function tags(): BelongsToMany
@@ -19,8 +22,13 @@ class Post extends Model
         return $this->belongsToMany(Tag::class, 'post_tags', 'post_id', 'tag_id');
     }
 
-    public function userLikes () : BelongsToMany
+    public function userLikes(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'post_user_likes', 'post_id', 'user_id');
+    }
+
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class, 'post_id', 'id');
     }
 }

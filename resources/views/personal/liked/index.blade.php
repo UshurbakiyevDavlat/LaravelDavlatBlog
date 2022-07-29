@@ -23,8 +23,6 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
-                <div class="row">
-                </div>
                 <div class="row pt-4">
                     <div class="col-8">
                         <div class="card">

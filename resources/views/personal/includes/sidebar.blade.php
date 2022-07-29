@@ -19,7 +19,7 @@
                             <i class="nav-icon fa fa-heart"></i>
                             <p>
                                 Liked posts
-                                <span class="badge badge-info right">10</span>
+                                <span class="badge badge-info right">{{\App\Models\Personal\PostUserLike::all()->count()}}</span>
                             </p>
                         </a>
                     </li>
@@ -29,7 +29,7 @@
                             <i class="nav-icon fa fa-sticky-note"></i>
                             <p>
                                 Comments
-                                <span class="badge badge-info right">10</span>
+                                <span class="badge badge-info right">{{\App\Models\Personal\Comment::all()->count()}}</span>
                             </p>
                         </a>
                     </li>

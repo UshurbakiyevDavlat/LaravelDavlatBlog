@@ -30,6 +30,10 @@ use App\Http\Controllers\Admin\User\ShowController as UserShowController;
 use App\Http\Controllers\Admin\User\StoreController as UserStoreController;
 use App\Http\Controllers\Admin\User\UpdateController as UserUpdateController;
 use App\Http\Controllers\Main\IndexController;
+use App\Http\Controllers\Personal\Comment\DeleteController as PersonalCommentDeleteController;
+use App\Http\Controllers\Personal\Comment\EditController as PersonalCommentEditController;
+use App\Http\Controllers\Personal\Comment\IndexController as PersonalCommentIndexController;
+use App\Http\Controllers\Personal\Comment\UpdateController as PersonalCommentUpdateController;
 use App\Http\Controllers\Personal\Liked\DeleteController as PersonalLikedDeleteController;
 use App\Http\Controllers\Personal\Liked\IndexController as PersonalLikedIndexController;
 use App\Http\Controllers\Personal\Main\IndexController as PersonalIndexController;
@@ -63,7 +67,10 @@ Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware' =>
         Route::delete('/{post}', [PersonalLikedDeleteController::class, '__invoke'])->name('personal.liked.delete');
     });
     Route::group(['namespace' => 'Comment', 'prefix' => 'comment'], static function () {
-        Route::get('/', [\App\Http\Controllers\Personal\Comment\IndexController::class, '__invoke'])->name('personal.comment.index');
+        Route::get('/', [PersonalCommentIndexController::class, '__invoke'])->name('personal.comment.index');
+        Route::get('/edit/{comment}', [PersonalCommentEditController::class, '__invoke'])->name('personal.comment.edit');
+        Route::patch('/update/{comment}', [PersonalCommentUpdateController::class, '__invoke'])->name('personal.comment.update');
+        Route::delete('/{comment}', [PersonalCommentDeleteController::class, '__invoke'])->name('personal.comment.delete');
     });
 });
 

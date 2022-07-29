@@ -7,12 +7,13 @@ use App\Models\Personal\Comment;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
-class IndexController extends Controller
+class DeleteController extends Controller
 {
-    public function __invoke(): Factory|View|Application
+    public function __invoke(Comment $comment): RedirectResponse
     {
-        $comments = Comment::all();
-        return view('personal.comment.index', compact('comments'));
+        $comment->delete();
+        return redirect()->route('personal.comment.index');
     }
 }

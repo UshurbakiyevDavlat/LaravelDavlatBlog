@@ -23,8 +23,6 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Small boxes (Stat box) -->
-                <div class="row">
-                </div>
                 <div class="row pt-4">
                     <div class="col-8">
                         <div class="card">
@@ -36,8 +34,24 @@
                                 <table class="table table-hover text-nowrap">
                                     <thead>
                                     <tr>
-                                        <th>Title</th>
+                                        <th>Comment</th>
+                                        <th colspan="2">Actions</th>
                                     </tr>
+                                    @foreach($comments as $comment)
+                                        <tr>
+                                            <td>{{$comment->comment}}</td>
+                                            <td class="text-center"><a href="{{route('personal.comment.edit',$comment->id)}}"><i class="fa fa-pen"></i></a></td>
+                                            <td class="text-center">
+                                                <form action="{{route('personal.comment.delete',$comment->id)}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="bg-transparent border-0">
+                                                        <i class="fa fa-trash text-danger" role="button"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     </thead>
                                     <tbody>
                                     </tbody>
