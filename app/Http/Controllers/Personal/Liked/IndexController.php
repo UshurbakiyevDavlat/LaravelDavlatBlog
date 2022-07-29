@@ -11,6 +11,7 @@ class IndexController extends Controller
 {
     public function __invoke(): Factory|View|Application
     {
-        return view('personal.liked.index');
+        $posts = auth()->user()->postLikes;
+        return view('personal.liked.index',compact('posts'));
     }
 }

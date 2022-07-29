@@ -37,7 +37,23 @@
                                     <thead>
                                     <tr>
                                         <th>Title</th>
+                                        <th colspan="2">Actions</th>
                                     </tr>
+                                    @foreach($posts as $post)
+                                        <tr>
+                                            <td>{{$post->title}}</td>
+                                            <td class="text-center"><a href="#"><i class="fa fa-eye"></i></a></td>
+                                            <td class="text-center">
+                                                <form action="{{route('personal.liked.delete',$post->id)}}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="bg-transparent border-0">
+                                                        <i class="fa fa-trash text-danger" role="button"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     </thead>
                                     <tbody>
                                     </tbody>

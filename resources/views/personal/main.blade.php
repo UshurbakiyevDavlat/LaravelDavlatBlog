@@ -33,7 +33,7 @@
                                 <p>Likes</p>
                             </div>
                             <div class="icon">
-                                <i class="fa fa-user"></i>
+                                <i class="fa fa-heart"></i>
                             </div>
                             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>

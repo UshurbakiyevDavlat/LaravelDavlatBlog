@@ -16,7 +16,7 @@
 
                     <li class="nav-item">
                         <a href="{{route('personal.liked.index')}}" class="nav-link">
-                            <i class="nav-icon fa fa-user"></i>
+                            <i class="nav-icon fa fa-heart"></i>
                             <p>
                                 Liked posts
                                 <span class="badge badge-info right">10</span>
